@@ -5352,8 +5352,60 @@
     });
 
     // 表單按鈕點擊事件 - 維修中版本
-    elements.allButtons.btnForm.addEventListener("click", () => {
-      showFormApplicationModal();
+    elements.allButtons.btnForm.addEventListener("click", async () => {
+      // 設置操作狀態為進行中
+      ButtonStateManager.setOperationStatus(true);
+      UIUtils.disableAllButtons();
+      
+      const idCode = elements.idInput.value;
+      const button = elements.allButtons.btnForm;
+
+      if (!validateIdCode(idCode)) {
+        UIUtils.displayError("請鍵入完整的身分證後四碼");
+        UIUtils.startIndividualCooldown(button, CONFIG.COOLDOWN_MS, button.dataset.originalText);
+        UIUtils.enableAllButtonsExcept(button);
+        ButtonStateManager.setOperationStatus(false);
+        return;
+      }
+
+      if (!navigator.onLine) {
+        UIUtils.displayError("離線無法開啟表單");
+        UIUtils.startIndividualCooldown(button, CONFIG.COOLDOWN_MS, button.dataset.originalText);
+        UIUtils.enableAllButtonsExcept(button);
+        ButtonStateManager.setOperationStatus(false);
+        return;
+      }
+      
+      UIUtils.displayLoading("驗證權限中...");
+
+      try {
+        const authCheck = await NetworkUtils.callGASWithRetry("checkDeviceBinding", [idCode]);
+        if (authCheck.status !== "success") {
+          UIUtils.displayError(authCheck.message || "不在授權名單中: 開啟失敗");
+          UIUtils.startIndividualCooldown(button, CONFIG.COOLDOWN_MS, button.dataset.originalText);
+          UIUtils.enableAllButtonsExcept(button);
+          ButtonStateManager.setOperationStatus(false);
+          return;
+        }
+        
+        // 驗證通過，顯示表單
+        UIUtils.clearResponse();
+        showFormApplicationModal();
+
+      } catch (err) {
+        UIUtils.displayError(`驗證失敗: ${err.message}`);
+        UIUtils.startIndividualCooldown(button, CONFIG.COOLDOWN_MS, button.dataset.originalText);
+        UIUtils.enableAllButtonsExcept(button);
+      } finally {
+        // 無論成功或失敗，最後都應重置狀態
+        ButtonStateManager.setOperationStatus(false);
+        // 只有不在冷卻中的按鈕才重新啟用
+        if (!ButtonStateManager.isButtonCooling(button.id)) {
+            UIUtils.enableAllButtons();
+        } else {
+            UIUtils.enableAllButtonsExcept(button);
+        }
+      }
     });
 
     // 點擊背景關閉表單選擇模態框
