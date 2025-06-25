@@ -2039,7 +2039,7 @@
     API_TIMEOUT: 20000, // 從 15000 增加到 20000，適應多座標處理
     JSONP_RETRY_COUNT: 2,
     JSONP_RETRY_DELAY: 1000,
-    SCHEDULE_URL: 'https://docs.google.com/spreadsheets/d/1K0nri6KwPn22rR4Es1rHx1DxmmDMyAlPMm8vSuUAVso/edit?usp=sharing'
+    SCHEDULE_URL: 'https://docs.google.com/spreadsheets/d/1LBRR_AbEzG9qohplcGc0XLmGXqd9eK3PfDVhvhmDaLI/edit?usp=sharing'
   };
 
   /**
@@ -2416,7 +2416,7 @@
     
     try {
       // 直接觸發公告連結開啟
-      const 公告連結 = 'https://docs.google.com/document/d/11PSJPaj8bkLccpat4gtEb1EJyEaEtPGW5hT-Jlce6Oo/edit?usp=sharing';
+      const 公告連結 = 'https://docs.google.com/document/d/1Qlycwv7JO8Suyjmwxe723AytJIyKElkrEVw-00PoKl8/edit?tab=t.0';
       triggerAppLink(公告連結);
       UIUtils.displaySuccess("內部公告已在新視窗中打開");
       
@@ -5352,24 +5352,8 @@
     });
 
     // 表單按鈕點擊事件 - 維修中版本
-    elements.allButtons.btnForm.addEventListener("click", async () => {
-      // 設置操作狀態為進行中
-      ButtonStateManager.setOperationStatus(true);
-      UIUtils.disableAllButtons();
-      
-      // 直接顯示維修中訊息
-      UIUtils.displayError("表單系統維修中｜暫時無法使用");
-      
-      // 啟動按鈕冷卻
-      UIUtils.startIndividualCooldown(
-        elements.allButtons.btnForm, 
-        CONFIG.COOLDOWN_MS, 
-        elements.allButtons.btnForm.dataset.originalText
-      );
-      
-      // 重新啟用其他按鈕
-      UIUtils.enableAllButtonsExcept(elements.allButtons.btnForm);
-      ButtonStateManager.setOperationStatus(false);
+    elements.allButtons.btnForm.addEventListener("click", () => {
+      showFormApplicationModal();
     });
 
     // 點擊背景關閉表單選擇模態框
