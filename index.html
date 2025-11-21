@@ -82,6 +82,21 @@
         .page-header { position: absolute; top: 50px; left: 60px; z-index: 10; }
         .page-header-content { display: flex; align-items: baseline; gap: 15px; }
         
+        /* 新增：標題連結樣式 */
+        .header-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+        .header-link:hover {
+            opacity: 0.8;
+            color: var(--accent-gold); /* Hover 時稍微變色提示可點擊 */
+        }
+        
         .header-num { 
             font-family: 'Oswald', sans-serif; 
             font-size: 30px; 
@@ -99,6 +114,10 @@
             letter-spacing: 2px; 
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
         }
+        /* 確保連結內的數字和文字繼承樣式 */
+        .header-link .header-num { color: inherit; }
+        .header-link:hover .header-num { color: var(--accent-gold); }
+
 
         /* --- 修正後的 Agenda Styles (風格 4 - 左側置中修正版) --- */
         .agenda-container {
@@ -452,8 +471,11 @@
 
         <div class="page-header">
             <div class="page-header-content">
-                <span class="header-num">01</span>
-                <span class="header-text">獲獎殊榮</span>
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">01</span>
+                    <span class="header-text">獲獎殊榮</span>
+                </a>
             </div>
         </div>
         
@@ -509,8 +531,11 @@
 
         <div class="page-header">
             <div class="page-header-content">
-                <span class="header-num">02</span>
-                <span class="header-text">現況與挑戰</span>
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">02</span>
+                    <span class="header-text">現況與挑戰</span>
+                </a>
             </div>
         </div>
 
@@ -581,7 +606,13 @@
     <!-- SECTION 4: SHAREHOLDER STRUCTURE -->
     <div class="section p-60" id="shareholder">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">03</span><span class="header-text">股東結構</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">03</span>
+                    <span class="header-text">股東結構</span>
+                </a>
+            </div>
         </div>
         
         <div class="shareholder-layout-a">
@@ -675,7 +706,13 @@
     <!-- SECTION 5: FINANCIAL REPORT (04) (圖表總覽) -->
     <div class="section" id="financial-report">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04</span><span class="header-text">114年度 財報說明 (總覽)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04</span>
+                    <span class="header-text">114年度 財報說明 (總覽)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-layout-d">
@@ -761,7 +798,13 @@
     <div class="section p-60" id="fin-04-1">
         <img src="https://i.meee.com.tw/t4B6I1O.webp" class="cover-bg" alt="[Image of a dark, abstract texture]" style="opacity: 0.1;">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04-1</span><span class="header-text">資產負債表 (114年1-9月)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04-1</span>
+                    <span class="header-text">資產負債表 (114年1-9月)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-image-container-full">
@@ -780,7 +823,13 @@
     <div class="section p-60" id="fin-04-2-1">
         <img src="https://i.meee.com.tw/t4B6I1O.webp" class="cover-bg" alt="[Image of a dark, abstract texture]" style="opacity: 0.1;">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04-2</span><span class="header-text">綜合期別比較表 (頁 1/3)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04-2</span>
+                    <span class="header-text">綜合期別比較表 (頁 1/3)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-image-container-full">
@@ -799,7 +848,13 @@
     <div class="section p-60" id="fin-04-2-2">
         <img src="https://i.meee.com.tw/t4B6I1O.webp" class="cover-bg" alt="[Image of a dark, abstract texture]" style="opacity: 0.1;">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04-2</span><span class="header-text">綜合期別比較表 (頁 2/3)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04-2</span>
+                    <span class="header-text">綜合期別比較表 (頁 2/3)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-image-container-full">
@@ -814,11 +869,16 @@
 
     <!-- ========================================== -->
     <!-- NEW SECTION 04-2-3: 綜合期別比較表 (頁3) -->
-    <!-- ========================================== -->
     <div class="section p-60" id="fin-04-2-3">
         <img src="https://i.meee.com.tw/t4B6I1O.webp" class="cover-bg" alt="" style="opacity: 0.1;">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04-2</span><span class="header-text">綜合期別比較表 (頁 3/3)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04-2</span>
+                    <span class="header-text">綜合期別比較表 (頁 3/3)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-image-container-full">
@@ -837,7 +897,13 @@
     <div class="section p-60" id="fin-04-3-1">
         <img src="https://i.meee.com.tw/t4B6I1O.webp" class="cover-bg" alt="" style="opacity: 0.1;">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04-3</span><span class="header-text">綜合損益表 (頁 1/2)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04-3</span>
+                    <span class="header-text">綜合損益表 (頁 1/2)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-image-container-full">
@@ -856,7 +922,13 @@
     <div class="section p-60" id="fin-04-3-2">
         <img src="https://i.meee.com.tw/t4B6I1O.webp" class="cover-bg" alt="" style="opacity: 0.1;">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">04-3</span><span class="header-text">綜合損益表 (頁 2/2)</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">04-3</span>
+                    <span class="header-text">綜合損益表 (頁 2/2)</span>
+                </a>
+            </div>
         </div>
 
         <div class="fin-image-container-full">
@@ -873,7 +945,13 @@
     <!-- SECTION 6: STRATEGY -->
     <div class="section p-60" id="strategy">
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">05</span><span class="header-text">優化策略與執行方針</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">05</span>
+                    <span class="header-text">優化策略與執行方針</span>
+                </a>
+            </div>
         </div>
         
         <div class="strategy-v21-container" style="display: flex; flex-direction: column; height: 100%; padding-top: 80px; gap: 30px;">
@@ -941,7 +1019,13 @@
         <div class="full-dark-overlay" style="background: rgba(0,0,0,0.7);"></div>
 
         <div class="page-header">
-            <div class="page-header-content"><span class="header-num">06</span><span class="header-text">2026 目標展望</span></div>
+            <div class="page-header-content">
+                <!-- 新增連結：點擊返回 #agenda -->
+                <a href="#agenda" class="header-link">
+                    <span class="header-num">06</span>
+                    <span class="header-text">2026 目標展望</span>
+                </a>
+            </div>
         </div>
         
         <!-- Updated Layout Wrapper for better vertical distribution -->
