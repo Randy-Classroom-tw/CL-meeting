@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>雲川水月 Clavius - 2025 股東會議</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,12 +54,11 @@
             padding: 60px 0;
             gap: 80px;
             -webkit-font-smoothing: antialiased;
-            min-width: 320px; /* 防止極端縮放 */
         }
 
-        /* --- 2. SECTION CONTAINER (桌面版固定寬度) --- */
+        /* --- 2. SECTION CONTAINER --- */
         .section {
-            width: 1280px; /* 桌面固定寬度 */
+            width: 1280px;
             height: 720px;
             position: relative;
             overflow: hidden;
@@ -120,24 +119,24 @@
         .header-link:hover .header-num { color: var(--accent-gold); }
 
 
-        /* --- 修正後的 Agenda Styles (風格 4 - 桌面版) --- */
+        /* --- 修正後的 Agenda Styles (風格 4 - 左側置中修正版) --- */
         .agenda-container {
             display: grid;
-            grid-template-columns: 400px 1fr; /* 桌面兩欄佈局 */
+            grid-template-columns: 400px 1fr; /* 保持 400px 寬度 */
             height: 100%;
             z-index: 2;
             position: relative;
         }
         
-        /* 左側：固定標題與背景 */
+        /* 左側：內容改為置中對齊 */
         .agenda-left {
-            padding: 60px 40px; 
+            padding: 60px 40px; /* 增加內邊距 */
             background: linear-gradient(to right, #000000, #111111);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; 
-            text-align: center; 
+            align-items: center; /* 關鍵：水平置中 */
+            text-align: center;  /* 關鍵：文字置中 */
             border-right: 1px solid var(--accent-gold);
             height: 100%;
         }
@@ -148,12 +147,12 @@
             line-height: 1.1;
             color: #fff;
             margin-top: 10px;
-            white-space: nowrap; 
+            white-space: nowrap; /* 強制不換行 */
         }
         
         /* 右側：導航列表區 */
         .agenda-list {
-            padding: 60px 80px 60px 60px; 
+            padding: 60px 80px 60px 60px; /* 保持間距 */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -358,151 +357,6 @@
         .hb-icon { font-size: 28px; margin-bottom: 12px; color: #fff; }
         .hb-text { font-size: 22px; color: #fff; font-weight: 500; }
         .hb-divider { height: 50px; width: 1px; background: rgba(255,255,255,0.1); }
-
-
-        /* ======================================= */
-        /* --- RWD MEDIA QUERIES (MOBILE FIXES) --- */
-        /* ======================================= */
-        @media (max-width: 768px) {
-            
-            /* 1. 核心容器調整 */
-            body { 
-                padding: 30px 0;
-                gap: 50px;
-            }
-            .section {
-                width: 95vw; /* 讓容器佔滿螢幕寬度，保持邊距 */
-                height: auto; /* 允許高度依內容增長 */
-                padding: 0; /* 移除容器本身 padding，讓內部元素控制 */
-                min-height: 500px;
-            }
-            .p-60 { padding: 30px; } /* 內邊距減半 */
-
-            /* 2. 標題調整 */
-            .page-header { 
-                top: 20px;
-                left: 20px;
-            }
-            .header-num { 
-                font-size: 20px;
-                margin-right: 10px;
-            }
-            .header-text { 
-                font-size: 24px;
-            }
-
-            /* 3. AGENDA (從 Grid 改為垂直堆疊) */
-            .agenda-container {
-                grid-template-columns: 1fr; /* 單欄佈局 */
-                height: auto;
-            }
-            
-            .agenda-left {
-                width: 100%;
-                height: 150px; /* 縮小高度 */
-                padding: 30px 20px; 
-                border-right: none;
-                border-bottom: 1px solid var(--accent-gold); /* 改為底部線條 */
-            }
-
-            .agenda-main-text-fixed {
-                font-size: 40px; /* 縮小標題字體 */
-            }
-
-            .agenda-list {
-                width: 100%;
-                padding: 30px 20px;
-                gap: 0; /* 列表間距縮小 */
-            }
-            
-            /* 導航項目微調 */
-            .nav-item {
-                padding: 10px 5px;
-            }
-            .main-text {
-                font-size: 18px;
-            }
-            .main-num {
-                font-size: 20px;
-                margin-right: 10px;
-                width: 25px;
-            }
-            
-            /* 子項目組調整 */
-            .sub-group {
-                padding-left: 35px;
-                gap: 5px;
-                margin-top: 5px;
-            }
-            .sub-link {
-                font-size: 12px;
-                padding: 4px 6px;
-            }
-
-            /* 4. 股東結構調整 (Shareholder) */
-            .shareholder-layout-a {
-                padding-top: 60px;
-                padding-left: 20px;
-                padding-right: 20px;
-                height: auto;
-            }
-            .layout-a-bottom {
-                flex-direction: column; /* 垂直堆疊 */
-            }
-            .top-chart-container {
-                height: 200px;
-            }
-            .pie-col-a {
-                margin-top: 30px;
-                padding: 20px 10px;
-                min-height: 350px;
-            }
-            
-            /* 5. 財報頁面 (Fin-Layout-D) */
-            .fin-layout-d {
-                padding-top: 80px; /* 縮小頭部間距 */
-                padding-left: 20px;
-                padding-right: 20px;
-                height: auto;
-            }
-            .fin-kpi-row-d {
-                grid-template-columns: 1fr; /* KPI 垂直堆疊 */
-                height: auto;
-                gap: 10px;
-            }
-            .fin-highlight-row-d {
-                grid-template-columns: 1fr; /* Highlight 垂直堆疊 */
-                height: auto;
-            }
-            
-            /* 6. 圖片頁面 (04-1, 04-2, 04-3) */
-            .fin-image-container-full {
-                margin-top: 60px;
-                height: 400px; /* 縮小圖片預留空間 */
-                padding: 10px;
-            }
-            
-            /* 7. Awards 頁面 */
-            .pillars-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding-top: 60px;
-            }
-            
-            /* 8. Status 頁面 */
-            .style-a-wrapper {
-                flex-direction: column;
-                gap: 40px;
-                padding-top: 60px;
-            }
-            .style-a-col {
-                width: 100%;
-                padding: 0 10px;
-            }
-            .style-a-divider {
-                display: none; /* 手機上移除分隔線 */
-            }
-        }
     </style>
 </head>
 <body>
@@ -528,7 +382,7 @@
         </div>
     </div>
 
-    <!-- SECTION 1.5: AGENDA (風格 4 - RWD 修正版) -->
+    <!-- SECTION 1.5: AGENDA (風格 4 - 左側置中修正版) -->
     <div class="section" id="agenda">
         <img src="https://i.meee.com.tw/oD4jfj5.webp" class="cover-bg" alt="" onerror="this.style.display='none';">
         
@@ -764,7 +618,7 @@
         <div class="shareholder-layout-a">
             <!-- 上方：圖片 -->
             <div class="top-chart-container">
-                <img src="https://i.meee.com.tw/PtJpV5u.jpg" class="chart-img" alt="[Image of Shareholder Structure Timeline Chart]" onerror="this.src='https://placehold.co/800x250/1f1f1f/fff?text=Shareholder+Structure+Chart';">
+                <img src="https://i.meee.com.tw/PtJpV5u.jpg" class="chart-img" alt="" onerror="this.src='https://placehold.co/800x250/1f1f1f/fff?text=Shareholder+Structure+Chart';">
             </div>
 
             <!-- 下方：資料區 -->
